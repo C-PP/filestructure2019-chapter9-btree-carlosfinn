@@ -1,7 +1,9 @@
 //tstbtree.cc
 #include "btnode.h"
+#include "btnode.tc"
 #include "btree.h"
-#include <iostream>
+#include "btree.tc"
+#include <iostream.h>
 
 const char * keys="CSDTAMPIBWNGURKEHOLJYQZFXV";
 

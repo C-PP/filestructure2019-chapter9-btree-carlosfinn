@@ -32,22 +32,21 @@ public:
 	void Print(ostream &);
 	void Print(ostream &, int nodeAddr, int level);
 protected:
-	//typedef BTreeNode<keyType> BTNode; 
-	// useful shorthand
-	BTreeNode<keyType>* FindLeaf(const keyType key);
+	typedef BTreeNode<keyType> BTNode;// useful shorthand
+	BTNode * FindLeaf(const keyType key);
 	// load a branch into memory down to the leaf with key
-	BTreeNode<keyType>* NewNode();
-	BTreeNode<keyType>* Fetch(const int recaddr);
-	int Store(BTreeNode<keyType>* thisNode);
-	BTreeNode<keyType> Root;
+	BTNode * NewNode();
+	BTNode * Fetch(const int recaddr);
+	int Store(BTNode *thisNode);
+	BTNode Root;
 	int Height; // height of tree
 	int Order; // order of tree
 	int PoolSize;
-	BTreeNode<keyType>** Nodes; // pool of available nodes
+	BTNode ** Nodes; // pool of available nodes
 					 // Nodes[1] is level 1, etc. (see FindLeaf)
 					 // Nodes[Height-1] is leaf
 	FixedFieldBuffer Buffer;
-	RecordFile<BTreeNode<keyType>> BTreeFile;
+	RecordFile<BTNode> BTreeFile;
 };
 
 #endif

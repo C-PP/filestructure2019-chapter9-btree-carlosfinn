@@ -12,8 +12,8 @@ BTree<keyType>::BTree(int order, int keySize, int unique)
 	Height = 1;
 	Order = order;
 	PoolSize = MaxHeight * 2;
-	Nodes = new BTreeNode *[PoolSize];
-	BTreeNode::InitBuffer(Buffer, order);
+	Nodes = new BTNode *[PoolSize];
+	BTNode::InitBuffer(Buffer, order);
 	Nodes[0] = &Root;
 }
 
@@ -65,7 +65,7 @@ int BTree<keyType>::Insert(const keyType key, const int recAddr)
 	int result; int level = Height - 1;
 	int newLargest = 0;
 	keyType prevKey, largestKey;
-	BTreeNode * thisNode = nullptr, *newNode = nullptr, *parentNode = nullptr;
+	BTNode * thisNode = nullptr, *newNode = nullptr, *parentNode = nullptr;
 	thisNode = FindLeaf(key);
 
 	// test for special case of new largest key in tree
@@ -126,7 +126,7 @@ int BTree<keyType>::Remove(const keyType key, const int recAddr)
 template <class keyType>
 int BTree<keyType>::Search(const keyType key, const int recAddr)
 {
-	BTreeNode * leafNode;
+	BTNode * leafNode;
 	leafNode = FindLeaf(key);
 	return leafNode->Search(key, recAddr);
 }
@@ -148,7 +148,7 @@ template <class keyType>
 void BTree<keyType>::Print
 (ostream & stream, int nodeAddr, int level)
 {
-	BTreeNode * thisNode = Fetch(nodeAddr);
+	BTNode * thisNode = Fetch(nodeAddr);
 	stream << "BTree::Print() ->Node at level " << level << " address " << nodeAddr << ' ' << endl;
 	thisNode->Print(stream);
 	if (Height > level)
@@ -178,7 +178,7 @@ BTreeNode<keyType> * BTree<keyType>::FindLeaf(const keyType key)
 template <class keyType>
 BTreeNode<keyType> * BTree<keyType>::NewNode()
 {// create a fresh node, insert into tree and set RecAddr member
-	BTreeNode * newNode = new BTreeNode(Order);
+	BTNode * newNode = new BTNode(Order);
 	int recAddr = BTreeFile.Append(*newNode);
 	newNode->RecAddr = recAddr;
 	return newNode;
@@ -188,14 +188,14 @@ template <class keyType>
 BTreeNode<keyType> * BTree<keyType>::Fetch(const int recaddr)
 {// load this node from File into a new BTreeNode
 	int result;
-	BTreeNode * newNode = new BTreeNode(Order);
+	BTNode * newNode = new BTNode(Order);
 	result = BTreeFile.Read(*newNode, recaddr);
 	if (result == -1) return NULL;
 	newNode->RecAddr = result;
 	return newNode;
 }
 template<class keyType>
-int BTree<keyType>::Store(BTreeNode<keyType>* thisNode)
+int BTree<keyType>::Store(BTNode * thisNode)
 {
 	return BTreeFile.Write(*thisNode, thisNode->RecAddr);
 }

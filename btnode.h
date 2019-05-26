@@ -1,7 +1,7 @@
 #pragma once
 //btnode.h
-#ifndef btnode_H
-#define btnode_H
+#ifndef BTNODE_H
+#define BTNODE_H
 
 #include "simpind.h"
 #include "recfile.h"

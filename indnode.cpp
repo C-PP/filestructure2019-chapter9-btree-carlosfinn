@@ -1,5 +1,5 @@
-//BTreeNode.cpp
-#include <iostream>
+//btnode.cpp
+#include <iostream.h>
 #include "simpind.h"
 #include "indnode.h"
 #include "fixfld.h"
