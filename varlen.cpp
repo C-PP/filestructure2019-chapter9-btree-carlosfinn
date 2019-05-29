@@ -58,7 +58,7 @@ const int headerSize = strlen(headerStr);
 int VariableLengthBuffer::ReadHeader(istream & stream)
 // read the header and check for consistency
 {
-	char str[headerSize + 1];
+	char str[9];
 	int result;
 	// read the IOBuffer header
 	result = IOBuffer::ReadHeader(stream);

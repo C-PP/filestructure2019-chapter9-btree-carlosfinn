@@ -11,6 +11,8 @@
 using namespace std;
 
 template <class keyType> class BTree;
+template <class keyType> class SimpleIndex;
+
 template <class keyType>
 class BTreeNode : public SimpleIndex<keyType> {// this is the in-memory version of the BTreeNode
 public:

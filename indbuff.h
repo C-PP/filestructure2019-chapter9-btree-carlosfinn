@@ -9,6 +9,8 @@
 
 using namespace std;
 
+template <class keyType> class SimpleIndex;
+
 // class IndexBuffer supports reading and writing index records from
 //	class SimpIndex by key value.
 // each record is consistent in its maximum size

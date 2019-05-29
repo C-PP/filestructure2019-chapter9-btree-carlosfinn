@@ -1,14 +1,13 @@
 //tstbtree.cc
+/*
 #include "btnode.h"
-#include "btnode.tc"
 #include "btree.h"
-#include "btree.tc"
-#include <iostream.h>
+#include <iostream>
 
 const char * keys="CSDTAMPIBWNGURKEHOLJYQZFXV";
 
 const int BTreeSize = 4;
-main (int argc, char * argv)
+int main (int argc, char * argv)
 {
 	int result, i;
 	BTree <char> bt (BTreeSize);
@@ -22,6 +21,6 @@ main (int argc, char * argv)
 	}
 	bt.Search(1,1);
 	return 1;
-}
+}*/
 
 

@@ -53,7 +53,7 @@ int FixedLengthBuffer::ReadHeader(istream & stream)
 // read the header and check for consistency
 // see WriteHeader for header record structure
 {
-	char str[headerStrSize + 1];
+	char str[6];
 	int recordSize;
 	int result;
 	// read the IOBuffer header

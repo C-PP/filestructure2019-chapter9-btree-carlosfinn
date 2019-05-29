@@ -1,9 +1,12 @@
 #pragma warning(disable:4996)
 //tstbtree.cc
+
 #include "btnode.h"
 #include "btnode.cpp"
 #include "btree.h"
 #include "btree.cpp"
+#include "simpind.h"
+#include "simpind.cpp"
 #include <iostream>
 #include <string>
 
@@ -11,7 +14,7 @@ using namespace std;
 
 const char * keys = "CSDTAMPIBWNGURKEHOLJYQZFXV";
 
-const int BTreeSize = 3;
+const int BTreeSize = 8;
 int main(int argc, char * argv){
 
 	int result, i;
